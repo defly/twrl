@@ -73,12 +73,6 @@ function consumeStream(stream) {
 
 var source = createTweetStream(createWorldTweetEmitter());
 
-// source.fork().each(function(e) {
-//     if (e.place === null) {
-//         console.log(e);
-//     }
-// });
-
 var languages = source
     .fork()
     .pluck('lang')
