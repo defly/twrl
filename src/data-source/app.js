@@ -4,6 +4,9 @@ var striptags = require('striptags');
 var moment = require('moment');
 var redis = require('redis');
 var redisClient = redis.createClient();
+var Common = require('./../lib/common');
+var getCurrentDate = Common.getCurrentDate;
+var genKey = Common.genKey;
 
 function createWorldTweetEmitter() {
     var T = new Twit({
@@ -22,14 +25,6 @@ function createWorldTweetEmitter() {
 
 function createTweetStream(e) {
     return _('tweet', e);
-}
-
-function getCurrentDate() {
-    return moment.utc().format('DD-MM-YYYY');
-}
-
-function genKey(entity) {
-    return entity + ':' + getCurrentDate();
 }
 
 function createStreamIntoStorageSet(entity) {
